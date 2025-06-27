@@ -1,0 +1,16 @@
+---
+- name: sample playbook
+  hosts: dev
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: install git
+      yum:
+        name: git
+        state: present
+      ignore_errors: yes
+
+    - name: check if git is installed
+      command: git --version
